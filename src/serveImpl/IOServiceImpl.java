@@ -27,6 +27,7 @@ public class IOServiceImpl implements IOService {
 			String file_path="src"+file_separater+userId+file_separater+fileName;
 		
 			java.io.File file=new java.io.File(file_path+".txt");
+			System.out.println(file_path);
 			BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 			String temp;
 			while((temp=reader.readLine())!=null){

@@ -11,6 +11,49 @@ public class ExecuteImpl implements ExecuteService {
 	 
 	@Override
 	public  String execute(String code, String param) throws RemoteException {
+		
+		
+		//Decide bf or Ook.
+		int sign=code.indexOf("O");
+		System.out.println(sign);
+		if(sign>=0){
+			System.out.println("ook");
+			String[] temp_codes=code.split(" ");
+			String[] codes=new String[temp_codes.length/2];
+			String code_bf="";
+			for(int i=0;i<codes.length;i++ ){
+				codes[i]=temp_codes[2*i]+temp_codes[2*i+1];
+				
+				if(codes[i].equals("Ook.Ook?")){
+					codes[i]=">";
+				}
+				else if(codes[i].equals("Ook?Ook.")){
+					codes[i]="<";
+				}
+				else if(codes[i].equals("Ook.Ook.")){
+					codes[i]="+";
+				}
+				else if(codes[i].equals("Ook!Ook!")){
+					codes[i]="-";
+				}
+				else if(codes[i].equals("Ook!Ook.")){
+					codes[i]=".";
+				}
+				else if(codes[i].equals("Ook.Ook!")){
+					codes[i]=",";
+				}
+				else if(codes[i].equals("Ook!Ook?")){
+					codes[i]="[";
+				}
+				else if(codes[i].equals("Ook?Ook!")){
+					codes[i]="]";
+				}
+				code_bf+=codes[i];
+			}
+			code=code_bf;
+		}
+		
+		
 		char values[]=new char [Max];
 		int pointer=0;
 		
