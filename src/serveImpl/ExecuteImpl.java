@@ -15,7 +15,6 @@ public class ExecuteImpl implements ExecuteService {
 		
 		//Decide bf or Ook.
 		int sign=code.indexOf("O");
-		System.out.println(sign);
 		if(sign>=0){
 			System.out.println("ook");
 			String[] temp_codes=code.split(" ");
