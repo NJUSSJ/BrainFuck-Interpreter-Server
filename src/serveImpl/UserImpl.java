@@ -40,7 +40,7 @@ public class UserImpl implements UserService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return false;
 	}
 
 

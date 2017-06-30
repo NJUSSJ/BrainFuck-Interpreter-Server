@@ -6,23 +6,23 @@ import service.ExecuteService;
 
 public class ExecuteImpl implements ExecuteService {
 
-	
+
 	private static final int Max=300000;
-	 
+
 	@Override
 	public  String execute(String code, String param) throws RemoteException {
-		
-		
+
+
 		//Decide bf or Ook.
 		int sign=code.indexOf("O");
 		if(sign>=0){
-			System.out.println("ook");
+
 			String[] temp_codes=code.split(" ");
 			String[] codes=new String[temp_codes.length/2];
 			String code_bf="";
 			for(int i=0;i<codes.length;i++ ){
 				codes[i]=temp_codes[2*i]+temp_codes[2*i+1];
-				
+
 				if(codes[i].equals("Ook.Ook?")){
 					codes[i]=">";
 				}
@@ -51,17 +51,17 @@ public class ExecuteImpl implements ExecuteService {
 			}
 			code=code_bf;
 		}
-		
-		
+
+
 		char values[]=new char [Max];
 		int pointer=0;
-		
+
 		char instructions[];
-		
-		
+
+
 	    char params[];
 		int param_pointer=0;
-		
+
 		String result="";
 		if(param!=null){
 			params=param.toCharArray();
@@ -75,7 +75,7 @@ public class ExecuteImpl implements ExecuteService {
 			switch (instructions[i]) {
 			case '>':
 				pointer++;
-				
+
 				break;
 			case '<':
 				if(pointer==0){
@@ -84,7 +84,7 @@ public class ExecuteImpl implements ExecuteService {
 				pointer--;
 				break;
 			case '+':
-				
+
 				values[pointer]++;
 				break;
 			case '-':
@@ -95,10 +95,10 @@ public class ExecuteImpl implements ExecuteService {
 				break;
 			case '[':
 				int count =1;
-			
+
 				if(values[pointer]==0){
 					i++;
-				while(true){	
+				while(true){
 					if(instructions[i]=='['){
 						count++;
 					}
@@ -110,7 +110,7 @@ public class ExecuteImpl implements ExecuteService {
 					}
 					i++;
 				}
-				
+
 			}
 				break;
 			case ']':
