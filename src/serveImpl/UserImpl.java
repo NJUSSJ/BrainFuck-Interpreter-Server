@@ -53,6 +53,9 @@ public class UserImpl implements UserService {
 	@Override
 	public Boolean new_Account(String username, String password) throws RemoteException {
 		user=new User("");
+		if(username==null||username.equals("")){
+			return false;
+		}
 		//Confirm state
 		try {
 			BufferedReader buf_r=new BufferedReader(new InputStreamReader(new FileInputStream(file)));
